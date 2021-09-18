@@ -121,30 +121,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   <body>
 
-<button class="btn btn-primary" id="printPdfButton">Print Screen As Pdf</button>  
-	<div id="background">
-      <div class="main_container">
-        <div class="menu">
-          <div class="menu_element menu_action_button">
-            <div></div>
-            <div></div>
-            <div></div>
+<div id="background">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">ART GALLERY</a>
           </div>
-          <div class="menu_element menu_option">report 5</div>
-          <div class="menu_element menu_option">report 4</div>
-          <div class="menu_element menu_option">report 3</div>
-          <div class="menu_element menu_option">report 2</div>
-          <div class="menu_element menu_option">report 1</div>
-          <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-            <div id="caption"></div>
-          </div>          
-        </div>
-      </div> 
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <button class="btn btn-danger navbar-btn" onclick="Impressionism()">Impressionism</button>
+            <button class="btn btn-danger navbar-btn"onclick="Surrealism()">Surrealism</button>
+            <button class="btn btn-primary navbar-btn" id="printPdfButton">Print Screen As Pdf</button>  
 
-    <form autocomplete="off" >
-      
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+
+        </div>
+      </nav>
+
+
+    <form class="col-md-offset-3" autocomplete="off" >
+      <div>
+
+      </div>
+      <div>
+        ......
+        .....
+        .....
+      </div>
       <div class="autocomplete" style="width:300px;">
         
         <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
@@ -155,8 +162,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       </br>
     </div>
     <img width=100% height=100%  border ="10" id="myimage" src="./art_gallery.png">
-     
-       
+    </div>
+    <div id = templates></div>
+    <div id="columnchart_values" style="width: 900px; height: 300px;"></div> 
+    <span class="menu-toggle"></span>
   </div>
     <div id = templates></div>
     <div id="columnchart_values" style="width: 900px; height: 300px;"></div> 

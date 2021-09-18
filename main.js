@@ -109,11 +109,11 @@ $(document).ready(() => {
         isHidden = false;
       }
     });
-  });
-  async_func();
+    async_func();
 
-  $("#printPdfButton").on("click", () => printPdf());
-});
+    $("#printPdfButton").on("click", () => printPdf());
+  });
+
 
 document.addEventListener("mousemove", onMouseUpdate, false);
 document.addEventListener("mouseenter", onMouseUpdate, false);
