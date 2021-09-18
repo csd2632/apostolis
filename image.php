@@ -32,58 +32,36 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReportingTool</title>
   </head>
-
   <body>
-  <a href="image.php">Ποσοστό Χρωμάτων</a>
-<a href="logout.php">Έξοδος</a>
+  <a href="index.php">Αρχική</a>
+  <a href="logout.php">Έξοδος</a>
     <a href="https://selectpdf.com/export-to-pdf/?" onclick="if(!this.urlAdded)href+='&url='+encodeURIComponent(location.href);this.urlAdded=1"><img src="https://selectpdf.com/buttons/save-as-pdf3.gif"/></a>
     <div id="background">
-      <div class="main_container">
-        <div class="menu">
-          <div class="menu_element menu_action_button">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div class="menu_element menu_option">report 5</div>
-          <div class="menu_element menu_option">report 4</div>
-          <div class="menu_element menu_option">report 3</div>
-          <div class="menu_element menu_option">report 2</div>
-          <div class="menu_element menu_option">report 1</div>
-          <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-            <div id="caption"></div>
-          </div>          
-        </div>
-      </div> 
-
-    <form autocomplete="off" >
-      
-      <div class="autocomplete" style="width:300px;">
-        
-        <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
-      </div>
-    </form>
-    <div class="img-zoom-container"> 
+    
+	<div class="img-zoom-container"> 
       <div class="row">
+	  
+	  <input type="file" id="myInput">
+    <canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <br/>
+    <div id="ui"></div>
       </br>
     </div>
-    <img width=100% height=100%  border ="10" id="myimage" src="./art_gallery.png">
+
      
        
   </div>
+
     <div id = templates></div>
     <div id="columnchart_values" style="width: 900px; height: 300px;"></div> 
+	
     <span class="menu-toggle"></span>
-
+    <script type="text/javascript" src="./index.js"></script>
   </body>
-</div>
 </html>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript"></script>
-<script type="text/javascript"></script>
-<script src="./func/templates.js"></script>
-<script src="./func/autocomplete.js"></script>
-<script src="./main.js"></script>
+
+
+
 
