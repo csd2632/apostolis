@@ -132,6 +132,9 @@ var functions = {
   },
 };
 
+function whateverFunction() {
+  console.log("clicked");
+}
 function image(img) {
   var src = img.src;
   modal.style.display = "block";

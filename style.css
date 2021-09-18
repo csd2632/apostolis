@@ -195,6 +195,11 @@ input[type="submit"] {
   color: #fff;
   cursor: pointer;
 }
+#autocomplete-list {
+  overflow: visible;
+  position: relative;
+  z-index: 9999;
+}
 .autocomplete-items {
   font-family: "Papyrus";
   box-shadow: -2px 3px 3px 1px rgb(0, 0, 0);
@@ -215,6 +220,7 @@ input[type="submit"] {
   cursor: pointer;
   background-color: #fff;
   border-bottom: 1px solid #d4d4d4;
+  border-collapse: collapse;
 }
 /*when hovering an item:*/
 .autocomplete-items div:hover {

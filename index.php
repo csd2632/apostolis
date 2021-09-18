@@ -135,43 +135,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
   </div>
   <div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="navbar-brand" href="#">ART GALLERY</a>
+          </li>
+          <li class="nav-item active">
+            <a href="#">Home</a>
+          </li>
 
+          <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Impressionism()">Impressionism</button></li>
 
+          <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Surrealism()">Surrealism</button></li>
 
-    <nav class="navbar navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">ART GALLERY</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <button class="btn btn-danger navbar-btn" onclick="Impressionism()">Impressionism</button>
-          <button class="btn btn-danger navbar-btn" onclick="Surrealism()">Surrealism</button>
-          <button class="btn btn-primary navbar-btn" id="printPdfButton">Print Screen As Pdf</button>
+          <li class="nav-item"><button class="btn btn-primary navbar-btn" id="printPdfButton">Print Screen</button></li>
 
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><button class="btn btn-muted navbar-btn" id="signUpButton" data-toggle="modal" data-target="#registerPopUp"><span class="glyphicon glyphicon-user"></span> Sign Up</button></li>
-          <li> <button type="button" class="btn btn-primary navbar-btn" id="signUpButton" data-toggle="modal" data-target="#myModal">
-              <span class="glyphicon glyphicon-user"></span> Sign Up
-            </button></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
+      </div>
+      <div class="mx-auto w-50">
+        <form class="nav-item autocomplete" autocomplete="off">
+          <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
+        </form>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><button class="btn btn-muted navbar-btn text-primary+
+          " id="signUpButton" data-toggle="modal" data-target="#registerPopUp"><span class="glyphicon glyphicon-user"></span> Sign Up</button></li>
+          <li class="nav-item"><button class="btn btn-muted navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Login</button></li>
 
+        </ul>
       </div>
     </nav>
 
 
-    <form class="col-md-offset-3" autocomplete="off">
-      <div>
-
+    <!-- <nav class="navbar navbar-expand-lg navbar-fixed-top">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">ART GALLERY</a>
       </div>
+      <div></div>
+      <ul class="nav navbar-nav">
+        <li class="nav-item active"><a href="#">Home</a></li>
+        <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Impressionism()">Impressionism</button></li>
+        <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Surrealism()">Surrealism</button></li>
+        <li class="nav-item"><button class="btn btn-primary navbar-btn" id="printPdfButton">Print Screen As Pdf</button></li>
 
-      <div class="autocomplete" style="width:300px;">
-
-        <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
+      </ul>
+      <div class="nav navbar-nav">
+        <form class="nav-item autocomplete" autocomplete="off">
+          <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
+        </form>
       </div>
-    </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><button class="btn btn-muted navbar-btn" id="signUpButton" data-toggle="modal" data-target="#registerPopUp"><span class="glyphicon glyphicon-user"></span> Sign Up</button></li>
+        <li class="nav-item"><button class="btn btn-muted navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Login</button></li>
+      </ul>
+
+    </nav> -->
+
+
+
 
     <div id=templates></div>
     <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
@@ -202,7 +225,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <!-- modals  -->
-    <div class="modal fade" id="registerPopUp" tabindex="-1" role="dialog" aria-labelledby="registerArea" hidden>
+    <!-- <div class="modal fade" id="registerPopUp" tabindex="-1" role="dialog" aria-labelledby="registerArea" hidden>
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -229,7 +252,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
 
