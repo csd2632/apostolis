@@ -182,13 +182,85 @@ $(document).ready(() => {
       isHidden = false;
     }
   });
+  async_func();
+
+  $("#printPdfButton").on("click", () => printPdf());
 });
 
 document.addEventListener("mousemove", onMouseUpdate, false);
 document.addEventListener("mouseenter", onMouseUpdate, false);
 
+const capture = async () => {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  const video = document.createElement("video");
+
+  try {
+    const captureStream = await navigator.mediaDevices.getDisplayMedia();
+    video.srcObject = captureStream;
+    context.drawImage(video, 0, 0, window.innerWidth, window.innerHeight);
+    console.log(
+      "width is : ",
+      window.innerWidth,
+      "height is :",
+      window.innerHeight
+    );
+    const frame = canvas.toDataURL("image/png");
+    captureStream.getTracks().forEach((track) => track.stop());
+    return frame;
+  } catch (err) {
+    console.error("Error: " + err);
+  }
+};
+function printPdf() {
+  // capture().then((res) => {
+  //   const pdf = new jsPDF();
+  //   const pdfWidth = pdf.internal.pageSize.width;
+  //   const pdfHeight = pdf.internal.pageSize.height;
+  //   pdf.addImage(res, "PNG", 0, 0, pdfWidth, pdfHeight);
+  //   pdf.save("download.pdf");
+  // });
+
+  window.print();
+
+  // html2canvas($("body")).then((canvas) => {
+  //   const imgData = canvas.toDataURL("image/png");
+  //   const pdf = new jsPDF();
+  //   let realWidth;
+  //   let realHeight;
+  //   // Create dummy image to get real width and height
+  //   $('<img alt="" src="">')
+  //     .attr("src", imgData)
+  //     .on("load", function () {
+  //       realWidth = this.width;
+  //       realHeight = this.height;
+  //       const pdfWidth = pdf.internal.pageSize.width;
+  //       const pdfHeight = pdf.internal.pageSize.height;
+
+  //       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+  //       pdf.save("download.pdf");
+  //     });
+  // });
+
+  // html2canvas($("body"), {
+  //   onrendered: function (canvas) {
+  //     const img = canvas.toDataURL("image/jpeg", 1);
+  //     var doc = new jsPDF();
+  //     doc.addImage(img);
+  //     doc.save("sample-file.pdf");
+  //   },
+  // });
+
+  // const pdf = new jsPDF("l", "pt", "a4");
+  // let options = {
+  //   pagesplit: true,
+  // };
+  // pdf.addHTML($("body"), 0, 0, options, function () {
+  //   let title = `site_image_${moment().format("DD-MM-YY:hh:mm:ss")}.pdf`;
+  //   pdf.save(title);
+  // });
+}
 //imageZoom("myimage", "myresult");
-async_func();
 clicked = true;
 $(document).ready(function () {
   $(".share-btn").click(function () {
