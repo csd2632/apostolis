@@ -4,6 +4,7 @@ colours_mapp = [];
 var user_set_name = false;
 
 console.log("testing pulls");
+console.log('testing push');
 let names = [
   {
     name: "first_img",
