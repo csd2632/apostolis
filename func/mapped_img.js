@@ -1,4 +1,13 @@
+function Impressionism(){
+  $("#background").css("background","");
+  $("#background").css("background","url(impressionism.jpg)");
 
+}
+function Surrealism(){
+  $("#background").css("background","");
+  $("#background").css("background","url(surrealism.jpg)");
+
+}
 function calculate_mapped_img_size(number) {
     return (870-(45*(number)))/number;
 }
@@ -50,12 +59,12 @@ function check_function(numbe) {
         document.getElementById("templates")
         .innerHTML +=`${data.map(similiarTemplate).join('')}`
         document.getElementById("similiar").checked = true;
-      }  
+      }
       if(numbe==4) {
         document.getElementById("templates")
         .innerHTML +=`${data.map(underlyingTemplate).join('')}`
         document.getElementById("underlying").checked = true;
-      } 
+      }
       if(document.getElementById("visible").checked == true&&numbe==5) {
         document.getElementById("templates")
         .innerHTML +=`${data.map(visibleTemplate).join('')}`
@@ -69,7 +78,7 @@ function check_function(numbe) {
       if(document.getElementById("full report").checked == true&&numbe==7) {
         document.getElementById("templates")
         .innerHTML +=`${data.map(damageTemplate).join('')}`
-        
+
         document.getElementById("templates")
         .innerHTML +=`${data.map(observationTemplate).join('')}`
 
@@ -83,7 +92,7 @@ function check_function(numbe) {
         .innerHTML +=`${data.map(pictorialTemplate).join('')}`
 
         document.getElementById("full report").checked = true;
-      
+
       }
       else {
         text.style.display = "none";
@@ -147,10 +156,10 @@ function imageZoom(imgID, resultID) {
   }
   var x = null;
 var y = null;
-    
+
 document.addEventListener('mousemove', onMouseUpdate, false);
 document.addEventListener('mouseenter', onMouseUpdate, false);
-    
+
 function onMouseUpdate(e) {
   x = e.pageX;
   y = e.pageY;

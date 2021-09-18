@@ -61,6 +61,10 @@ function autocomplete(inp, arr) {
                         /*close the list of autocompleted values,
                         (or any other open lists of autocompleted values:*/
                         closeAllLists();
+                        image_pick=inp.value;
+                        //console.log(inp.value);
+                        resolve(inp.value);
+                        return inp.value;
                     });
                     a.appendChild(b);
                 }
@@ -99,7 +103,13 @@ function autocomplete(inp, arr) {
         });
         document.addEventListener("click", function (e) {
             /*executed when someone clicks in the document:*/
+            
             closeAllLists(e.target);
+            if (currentFocus > -1) {
+            image_pick=inp.value;
+            //console.log(inp.value);
+            resolve(inp.value);
+            return inp.value;}
         });
     })
 }
