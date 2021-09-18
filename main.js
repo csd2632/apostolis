@@ -223,6 +223,7 @@ function printPdf() {
   // });
 
   window.print();
+  console.log('whatever');
 
   // html2canvas($("body")).then((canvas) => {
   //   const imgData = canvas.toDataURL("image/png");
