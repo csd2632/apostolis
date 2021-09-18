@@ -102,18 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js" integrity="sha512-tVYBzEItJit9HXaWTPo8vveXlkK62LbA+wez9IgzjTmFNLMBO1BEYladBw2wnM3YURZSMUyhayPCoLtjGh84NQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script type="text/javascript" src="data.js"></script>
-  <script src="./func/mapped_img.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "> </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
   <link rel="stylesheet" href="./style.css">
   <meta charset="UTF-8">
@@ -121,9 +112,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+  <div class="modal fade" id="registerPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <h1>This is the modal body</h1>
+          <p>OK????????????????????????</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
 
-  <div id="background">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+
+    <nav class="navbar navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">ART GALLERY</a>
@@ -137,6 +152,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><button class="btn btn-muted navbar-btn" id="signUpButton" data-toggle="modal" data-target="#registerPopUp"><span class="glyphicon glyphicon-user"></span> Sign Up</button></li>
+          <li> <button type="button" class="btn btn-primary navbar-btn" id="signUpButton" data-toggle="modal" data-target="#myModal">
+              <span class="glyphicon glyphicon-user"></span> Sign Up
+            </button></li>
           <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
 
@@ -148,86 +166,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div>
 
       </div>
-      <div>
-        ......
-        .....
-        .....
-      </div>
+
       <div class="autocomplete" style="width:300px;">
 
         <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
       </div>
     </form>
-    <div class="img-zoom-container">
-      <div class="row">
-        </br>
-      </div>
-      <img width=100% height=100% border="10" id="myimage" src="./art_gallery.png">
-    </div>
+
     <div id=templates></div>
     <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
     <span class="menu-toggle"></span>
-  </div>
-  <div id=templates></div>
-  <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-  <span class="menu-toggle"></span>
-  <?php
-  if (!empty($login_err)) {
-    echo '<div class="alert alert-danger">' . $login_err . '</div>';
-  }
-  ?>
+    <div id=templates></div>
+    <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+    <span class="menu-toggle"></span>
+    <?php
+    if (!empty($login_err)) {
+      echo '<div class="alert alert-danger">' . $login_err . '</div>';
+    }
+    ?>
 
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-    <label>Όνομα</label> <br>
-    <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>">
-    <span><?php echo $username_err; ?></span>
-    <br>
-    <label>Κωδικός</label> <br>
-    <input type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
-    <span><?php echo $password_err; ?></span>
-    <br> <br> <br>
+      <label>Όνομα</label> <br>
+      <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>">
+      <span><?php echo $username_err; ?></span>
+      <br>
+      <label>Κωδικός</label> <br>
+      <input type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
+      <span><?php echo $password_err; ?></span>
+      <br> <br> <br>
 
-    <input type="submit" value="Σύνδεση">
+      <input type="submit" value="Σύνδεση">
 
-  </form>
+    </form>
 
 
-  <!-- modals  -->
-  <div class="modal fade" id="registerPopUp" tabindex="-1" role="dialog" aria-labelledby="registerArea" hidden>
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="registerArea">New message</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Message:</label>
-              <input type="text" class="form-control" id="recipient-name">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
+    <!-- modals  -->
+    <div class="modal fade" id="registerPopUp" tabindex="-1" role="dialog" aria-labelledby="registerArea" hidden>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerArea">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Send message</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="data.js"></script>
+  <script src="./func/mapped_img.js"></script>
+  <script type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="./func/templates.js"></script>
+  <script src="./func/autocomplete.js"></script>
+  <script src="./main.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 
+
 </html>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript"></script>
-<script type="text/javascript"></script>
-<script src="./func/templates.js"></script>
-<script src="./func/autocomplete.js"></script>
-<script src="./main.js"></script>
