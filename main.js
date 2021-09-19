@@ -154,7 +154,7 @@ async function async_func() {
 
   autocomplete(document.getElementById("myInput"), data).then((message) => {
     try {
-      image_x.parentNode.removeChild(image_x);
+      // image_x.parentNode.removeChild(image_x);
       document.getElementById("templates").innerHTML = ` 
           ${data.map(imageTemplate).join("")}
           ${checkBoxTemplate()}
@@ -165,6 +165,7 @@ async function async_func() {
 
   });
 }
+
 
 $(document).ready(() => {
   let isHidden = false;

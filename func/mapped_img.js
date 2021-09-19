@@ -1,11 +1,11 @@
 function Impressionism(){
-  $("#background").css("background","");
-  $("#background").css("background","url(impressionism.jpg)");
+  $(".container-fluid").css("background","");
+  $(".container-fluid").css("background","url(impressionism.jpg)");
 
 }
 function Surrealism(){
-  $("#background").css("background","");
-  $("#background").css("background","url(surrealism.jpg)");
+  $(".container-fluid").css("background","");
+  $(".container-fluid").css("background","url(surrealism.jpg)");
 
 }
 function calculate_mapped_img_size(number) {

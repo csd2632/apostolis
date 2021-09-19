@@ -112,24 +112,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-  <div class="modal fade" id="registerPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="logInPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="myModalLabel"><text>Σύνδεση</text></h4>
         </div>
         <div class="modal-body">
-          <h1>This is the modal body</h1>
-          <p>OK????????????????????????</p>
+        <?php
+    if (!empty($login_err)) {
+      echo '<div class="alert alert-danger">' . $login_err . '</div>';
+    }
+
+    ?>
+
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+ 
+              <div class="form-group">
+                <label for="loginUserName" class="text-left col-form-label"><text>Όνομα Χρήστη:</text></label>
+                <input id="loginUserName" class="form-control" type="text" name="username" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
+
+              </div>
+              <div class="form-group">
+                <label for="loginPassword" class="col-form-label"><text>Κωδικός:</text></label>
+                <input class="form-control text-center" id="loginPassword" type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
+      <span><?php echo $password_err; ?></span>
+                <span><?php echo $password_err; ?></span>
+              </div>
+            </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">
             Close
           </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <input type="submit" value="Σύνδεση">
         </div>
       </div>
     </div>
@@ -139,9 +158,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item mr-10"><button class="btn btn-muted navbar-btn text-light" id="signUpButton" data-toggle="modal" data-target="#registerPopUp">
-            <span class="glyphicon glyphicon-user"></span> <text>Sign Up</text></button>
+            <text>Sign Up</text></button>
           </li>
-          <li class="nav-item"><button class="btn btn-muted navbar-btn text-light"><span class="glyphicon glyphicon-log-in"></span><text> Login</text></button></li>
+          <li class="nav-item"><button class="btn btn-muted navbar-btn text-light" id="logInButton" data-toggle="modal" data-target="#logInPopUp"><text>Login</text></button></li>
 
 
           <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Impressionism()">Impressionism</button></li>
@@ -197,26 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id=templates></div>
     <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
     <span class="menu-toggle"></span>
-    <?php
-    if (!empty($login_err)) {
-      echo '<div class="alert alert-danger">' . $login_err . '</div>';
-    }
-    ?>
-
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-
-      <label>Όνομα</label> <br>
-      <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>">
-      <span><?php echo $username_err; ?></span>
-      <br>
-      <label>Κωδικός</label> <br>
-      <input type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
-      <span><?php echo $password_err; ?></span>
-      <br> <br> <br>
-
-      <input type="submit" value="Σύνδεση">
-
-    </form>
+   
 
 
     <!-- modals  -->
