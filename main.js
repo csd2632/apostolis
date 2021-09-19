@@ -153,11 +153,16 @@ async function async_func() {
   var image_x = document.getElementById("myimage");
 
   autocomplete(document.getElementById("myInput"), data).then((message) => {
-    image_x.parentNode.removeChild(image_x);
-    document.getElementById("templates").innerHTML = ` 
-        ${data.map(imageTemplate).join("")}
-        ${checkBoxTemplate()}
-        `;
+    try {
+      image_x.parentNode.removeChild(image_x);
+      document.getElementById("templates").innerHTML = ` 
+          ${data.map(imageTemplate).join("")}
+          ${checkBoxTemplate()}
+          `;
+    } catch (error) {
+      debugger;
+    }
+
   });
 }
 

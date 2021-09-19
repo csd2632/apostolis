@@ -138,12 +138,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="navbar-brand" href="#">ART GALLERY</a>
+        <li class="nav-item mr-10"><button class="btn btn-muted navbar-btn text-light" id="signUpButton" data-toggle="modal" data-target="#registerPopUp">
+            <span class="glyphicon glyphicon-user"></span> <text>Sign Up</text></button>
           </li>
-          <li class="nav-item active">
-            <a href="#">Home</a>
-          </li>
+          <li class="nav-item"><button class="btn btn-muted navbar-btn text-light"><span class="glyphicon glyphicon-log-in"></span><text> Login</text></button></li>
+
 
           <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Impressionism()">Impressionism</button></li>
 
@@ -153,22 +152,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </ul>
       </div>
-      <div class="mx-auto w-50">
-        <form class="nav-item autocomplete" autocomplete="off">
-          <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
-        </form>
-      </div>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><button class="btn btn-muted navbar-btn text-primary+
-          " id="signUpButton" data-toggle="modal" data-target="#registerPopUp"><span class="glyphicon glyphicon-user"></span> Sign Up</button></li>
-          <li class="nav-item"><button class="btn btn-muted navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Login</button></li>
 
-        </ul>
-      </div>
     </nav>
 
 
+    <form class="col-md-offset-3" autocomplete="off">
+
+    
+      <div class="autocomplete" style="width:300px;">
+
+        <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
+      </div>
+    </form>
     <!-- <nav class="navbar navbar-expand-lg navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">ART GALLERY</a>
