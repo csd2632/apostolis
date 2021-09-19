@@ -122,27 +122,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <h4 class="modal-title" id="myModalLabel"><text>Σύνδεση</text></h4>
         </div>
         <div class="modal-body">
-        <?php
-    if (!empty($login_err)) {
-      echo '<div class="alert alert-danger">' . $login_err . '</div>';
-    }
+          <?php
+          if (!empty($login_err)) {
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+          }
 
-    ?>
+          ?>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
- 
-              <div class="form-group">
-                <label for="loginUserName" class="text-left col-form-label"><text>Όνομα Χρήστη:</text></label>
-                <input id="loginUserName" class="form-control" type="text" name="username" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-              </div>
-              <div class="form-group">
-                <label for="loginPassword" class="col-form-label"><text>Κωδικός:</text></label>
-                <input class="form-control text-center" id="loginPassword" type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
-      <span><?php echo $password_err; ?></span>
-                <span><?php echo $password_err; ?></span>
-              </div>
-            </form>
+            <div class="form-group">
+              <label for="loginUserName" class="text-left col-form-label"><text>Όνομα Χρήστη:</text></label>
+              <input id="loginUserName" class="form-control" type="text" name="username" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
+
+            </div>
+            <div class="form-group">
+              <label for="loginPassword" class="col-form-label"><text>Κωδικός:</text></label>
+              <input class="form-control text-center" id="loginPassword" type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
+              <span><?php echo $password_err; ?></span>
+              <span><?php echo $password_err; ?></span>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -157,8 +157,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-        <li class="nav-item mr-10"><button class="btn btn-muted navbar-btn text-light" id="signUpButton" data-toggle="modal" data-target="#registerPopUp">
-            <text>Sign Up</text></button>
+          <li class="nav-item mr-10"><button class="btn btn-muted navbar-btn text-light" id="signUpButton" data-toggle="modal" data-target="#registerPopUp">
+              <text>Sign Up</text></button>
           </li>
           <li class="nav-item"><button class="btn btn-muted navbar-btn text-light" id="logInButton" data-toggle="modal" data-target="#logInPopUp"><text>Login</text></button></li>
 
@@ -177,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <form class="col-md-offset-3" autocomplete="off">
 
-    
+
       <div class="autocomplete" style="width:300px;">
 
         <input id="myInput" type="text" name="Search work of art" placeholder="Search work of art">
@@ -216,7 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id=templates></div>
     <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
     <span class="menu-toggle"></span>
-   
+
 
 
     <!-- modals  -->
