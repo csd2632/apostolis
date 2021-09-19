@@ -651,3 +651,8 @@ h2 {
   color: #2196f3;
   font-size: 25px;
 }
+
+* {
+  -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+  color-adjust: exact !important; /*Firefox*/
+}
