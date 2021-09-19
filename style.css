@@ -12,8 +12,8 @@ img {
 
 .container-fluid {
   background: url("./art_gallery.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
 }
 
 .app-title {
