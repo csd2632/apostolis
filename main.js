@@ -156,12 +156,10 @@ async function async_func() {
     try {
       // image_x.parentNode.removeChild(image_x);
       document.getElementById("templates").innerHTML = ` 
-          ${data.map(imageTemplate).join('')}
+          ${data.map(imageTemplate).join("")}
           ${checkBoxTemplate()}
           `;
-    } catch (error) {
-      debugger;
-    }
+    } catch (error) {}
   });
 }
 
@@ -194,14 +192,29 @@ $(document).ready(() => {
 
   $("#printPdfButton").on("click", () => printPdf());
 
+  $("#loginForm").on("submit", (e) => {
+    handleLogin(e);
+  });
+  $("#profileButton").on("click", () => $("#profileLink")[0].click());
+
   // $("#signUpButton").on("click", () => toggleRegisterModal(true));
 });
 // function toggleRegisterModal(state) {
-//   debugger;
+//
 //   $("#registerPopUp").show();
 // }
+function closeModal(modalId) {
+  let modalToClose = `#${modalId}`;
+  $(modalToClose).modal("hide");
+}
+function handleLogin(e) {
+  if ($("#loginError").length) {
+    $("#loginError").remove();
+    return false;
+  }
+  return true;
+}
 function logOut() {
-  debugger;
   $("#logoutLink")[0].click();
 }
 document.addEventListener("mousemove", onMouseUpdate, false);

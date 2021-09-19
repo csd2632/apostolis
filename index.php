@@ -115,24 +115,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-  <div class="modal fade" id="logInPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" data-backdrop="static" id="logInPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" onclick="closeModal('logInPopUp')" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
           <h4 class="modal-title" id="myModalLabel"><text>Σύνδεση</text></h4>
         </div>
         <div class="modal-body">
-          <?php
-          if (!empty($login_err)) {
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-          }
 
-          ?>
 
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+          <form id="loginForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
             <div class="form-group">
               <label for="loginUserName" class="text-left col-form-label"><text>Όνομα Χρήστη:</text></label>
@@ -145,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
+          <button type="button" class="btn btn-danger" onclick="closeModal('logInPopUp')">
             Close
           </button>
           <input type="submit" class="btn btn-primary" value="Σύνδεση">
@@ -155,7 +150,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
   </div>
+
   <div class="container-fluid">
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
@@ -169,11 +166,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <li class="nav-item mx-1"><button class="btn btn-warning navbar-btn" onclick="Impressionism()">Impressionism</button></li>
           <li class="nav-item mx-1"><button class="btn btn-success navbar-btn" onclick="Surrealism()">Surrealism</button></li>
           <li class="nav-item mx-1"><button class="btn btn-info navbar-btn" id="printPdfButton">Print Screen</button></li>
+          <li class="nav-item mx-1"><button class="btn btn-success navbar-btn text-light" id="profileButton" <?php echo (!$isloggedin == true) ? 'hidden' : ''; ?>><text>Profile</text></button></li>
+          <a id="profileLink" href="profile.php" hidden></a>
+          <?php
+          if (!empty($login_err)) {
+            echo '<div id="loginError" class="alert alert-danger">' . $login_err . '</div>';
+          }
 
+          ?>
         </ul>
       </div>
 
     </nav>
+
+
 
 
     <form class="col-md-offset-3" autocomplete="off">
