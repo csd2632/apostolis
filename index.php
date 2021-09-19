@@ -145,10 +145,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
             Close
           </button>
-          <input type="submit" value="Σύνδεση">
+          <input type="submit" class="btn btn-primary" value="Σύνδεση">
           </form>
 
         </div>
