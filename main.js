@@ -5,89 +5,89 @@ var user_set_name = false;
 
 console.log("testing pulls");
 console.log("testing push");
-let names = [
-  {
-    name: "first_img",
-    img: "./img/0380_00800S.bmp",
-    descr: "description",
-    date: "2001",
-    materials: "first image",
-    inv: "first image",
-    institution: "first image",
-    designation: "first image",
-    dimension: "10*10*20 cm",
-    person: "first image",
-  },
-  {
-    name: "second_img",
-    img: "./img/0390_01000S.bmp",
-    descr: "two",
-    date: "2002",
-    materials: "second image",
-    inv: "second image",
-    institution: "second image",
-    designation: "second image",
-    dimension: "10*10*20 cm",
-    person: "second image",
-  },
-  {
-    name: "third_img",
-    img: "./Folder_Structure_for_Report_generator/general/projectMainImage.png",
-    descr: "three",
-    date: "2003",
-    materials: "third image",
-    inv: "third image",
-    institution: "third image",
-    designation: "third image",
-    dimension: "10*10*20 cm",
-    person: "third image",
-  },
-  {
-    name: "forth_img",
-    img: "./img/0390_01000S.bmp",
-    descr: "forth",
-    date: "2004",
-    materials: "forth image",
-    inv: "forth image",
-    institution: "forth image",
-    designation: "forth image",
-    dimension: "10*10*20 cm",
-    person: "forth image",
-  },
-];
-let mapping = [
-  {
-    name: "firs_img",
-    img1: "./img/0380_00800S.bmp",
-    img2: "./img/0380_00800S.bmp",
-    img3: "./img/0380_00800S.bmp",
-    img4: "./img/0380_00800S.bmp",
-  },
-  {
-    name: "second_img",
-    img1: "./img/0390_01000S.bmp",
-    img2: "./img/0390_01000S.bmp",
-    img3: "./img/0390_01000S.bmp",
-    img4: "./img/0390_01000S.bmp",
-  },
-  {
-    name: "third_img",
-    img1: "./img/0400_01726S.bmp",
-    img2: "./img/0400_01726S.bmp",
-    img3: "./img/0400_01726S.bmp",
-    img4: "./img/0400_01726S.bmp",
-  },
-  {
-    name: "forth_img",
-    img1: "./img/0390_01000S.bmp",
-    img2: "./img/0390_01000S.bmp",
-    img3: "./img/0390_01000S.bmp",
-    img4: "./img/0390_01000S.bmp",
-  },
-];
+// let names = [
+//   {
+//     name: "first_img",
+//     img: "./img/0380_00800S.bmp",
+//     descr: "description",
+//     date: "2001",
+//     materials: "first image",
+//     inv: "first image",
+//     institution: "first image",
+//     designation: "first image",
+//     dimension: "10*10*20 cm",
+//     person: "first image",
+//   },
+//   {
+//     name: "second_img",
+//     img: "./img/0390_01000S.bmp",
+//     descr: "two",
+//     date: "2002",
+//     materials: "second image",
+//     inv: "second image",
+//     institution: "second image",
+//     designation: "second image",
+//     dimension: "10*10*20 cm",
+//     person: "second image",
+//   },
+//   {
+//     name: "third_img",
+//     img: "./Folder_Structure_for_Report_generator/general/projectMainImage.png",
+//     descr: "three",
+//     date: "2003",
+//     materials: "third image",
+//     inv: "third image",
+//     institution: "third image",
+//     designation: "third image",
+//     dimension: "10*10*20 cm",
+//     person: "third image",
+//   },
+//   {
+//     name: "forth_img",
+//     img: "./img/0390_01000S.bmp",
+//     descr: "forth",
+//     date: "2004",
+//     materials: "forth image",
+//     inv: "forth image",
+//     institution: "forth image",
+//     designation: "forth image",
+//     dimension: "10*10*20 cm",
+//     person: "forth image",
+//   },
+// ];
+// let mapping = [
+//   {
+//     name: "firs_img",
+//     img1: "./img/0380_00800S.bmp",
+//     img2: "./img/0380_00800S.bmp",
+//     img3: "./img/0380_00800S.bmp",
+//     img4: "./img/0380_00800S.bmp",
+//   },
+//   {
+//     name: "second_img",
+//     img1: "./img/0390_01000S.bmp",
+//     img2: "./img/0390_01000S.bmp",
+//     img3: "./img/0390_01000S.bmp",
+//     img4: "./img/0390_01000S.bmp",
+//   },
+//   {
+//     name: "third_img",
+//     img1: "./img/0400_01726S.bmp",
+//     img2: "./img/0400_01726S.bmp",
+//     img3: "./img/0400_01726S.bmp",
+//     img4: "./img/0400_01726S.bmp",
+//   },
+//   {
+//     name: "forth_img",
+//     img1: "./img/0390_01000S.bmp",
+//     img2: "./img/0390_01000S.bmp",
+//     img3: "./img/0390_01000S.bmp",
+//     img4: "./img/0390_01000S.bmp",
+//   },
+// ];
 paintings_names.push(data);
 paintings_mapping.push(data);
-colours_mapp.push(names[2]);
+//colours_mapp.push(names[2]);
 
 console.log("push test");
 console.log("push test");
@@ -156,7 +156,7 @@ async function async_func() {
     try {
       // image_x.parentNode.removeChild(image_x);
       document.getElementById("templates").innerHTML = ` 
-          ${data.map(imageTemplate).join("")}
+          ${data.map(imageTemplate).join('')}
           ${checkBoxTemplate()}
           `;
     } catch (error) {

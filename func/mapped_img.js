@@ -46,57 +46,63 @@ function drawChart() {
 }
 let checkboxes=[];
 function check_function(numbe) {
-      if(numbe==1){
-        document.getElementById("templates")
-        .innerHTML +=` ${data.map(mappingTemplate).join('')};`
-      }
-      if(numbe==2) {
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(pigmentTemplate).join('')}`
-        document.getElementById("pigment").checked = true;
-      }
-      if(numbe==3) {
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(similiarTemplate).join('')}`
-        document.getElementById("similiar").checked = true;
-      }
-      if(numbe==4) {
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(underlyingTemplate).join('')}`
-        document.getElementById("underlying").checked = true;
-      }
-      if(document.getElementById("visible").checked == true&&numbe==5) {
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(visibleTemplate).join('')}`
-        document.getElementById("visible").checked = true;
-      }
-      if(document.getElementById("uv").checked == true&&numbe==6) {
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(uvTemplate).join('')}`
-        document.getElementById("uv").checked = true;
-      }
-      if(document.getElementById("full report").checked == true&&numbe==7) {
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(damageTemplate).join('')}`
+  if(numbe==1){
+    document.getElementById("templates")
+    .innerHTML +=` ${data.map(mappingTemplate).join('')};`
+    
+  }
+  if(numbe==2) {
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(pigmentTemplate).join('')}`
+    document.getElementById("pigment").checked = true;
+    
+  }
+  if(numbe==3) {
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(similiarTemplate).join('')}`
+    document.getElementById("similiar").checked = true;
+   
+  }  
+  if(numbe==4) {
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(underlyingTemplate).join('')}`
+    document.getElementById("underlying").checked = true;
+    
+  } 
+  if(numbe==5) {
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(visibleTemplate).join('')}`
+    document.getElementById("visible").checked = true;
+    
+  }
+  if(numbe==6) {
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(uvTemplate).join('')}`
+    document.getElementById("uv").checked = true;
+    
+  }
+  if(numbe==7) {
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(damageTemplate).join('')}`
+    
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(observationTemplate).join('')}`
 
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(observationTemplate).join('')}`
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(surfaceTemplate).join('')}`
 
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(surfaceTemplate).join('')}`
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(intervationTemplate).join('')}`
 
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(intervationTemplate).join('')}`
+    document.getElementById("templates")
+    .innerHTML +=`${data.map(pictorialTemplate).join('')}`
 
-        document.getElementById("templates")
-        .innerHTML +=`${data.map(pictorialTemplate).join('')}`
-
-        document.getElementById("full report").checked = true;
-
-      }
-      else {
-        text.style.display = "none";
-    }
+    document.getElementById("full report").checked = true;
+  
+  }
+  else {
+    text.style.display = "none";
+}
 }
 ///////////////////////////////
 function imageZoom(imgID, resultID) {
