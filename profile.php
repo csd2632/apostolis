@@ -1,4 +1,8 @@
 <?php
+session_start();
+$username = $_SESSION["username"];
+$id = $_SESSION["id"];
+
 
 ?>
 <!DOCTYPE html>
@@ -27,14 +31,15 @@
                         <li class="nav-item mx-1"><button class="btn btn-warning navbar-btn" onclick="Impressionism()">Impressionism</button></li>
                         <li class="nav-item mx-1"><button class="btn btn-success navbar-btn" onclick="Surrealism()">Surrealism</button></li>
                         <li class="nav-item mx-1"><button class="btn btn-info navbar-btn" id="printPdfButton">Print Screen</button></li>
+                        <a id="logoutLink" href="upload.php">click me baby one more time</a>
 
                     </ul>
                 </div>
             </nav>
-            </div>
-            <br>
-            <br>
-            <br>
+        </div>
+        <br>
+        <br>
+        <br>
         <div class="card" style="padding: top 100px;">
             <div class="card-header">
                 <h1>
@@ -45,6 +50,12 @@
                 <div class="card-title">
                     <h1>
                         profile
+                        <?php
+
+                        echo '<div id="loginError" class="alert alert-danger"><text> this is the user id :' . $id . 'and the username :' . $username . '</text></div>';
+
+
+                        ?>
                     </h1>
 
                 </div>
