@@ -1,13 +1,14 @@
 <?php
-
+$isloggedin = false;
 // Αρχικοποιήστε τη συνεδρία
-session_start();
-
+if (session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+  // session isn't started
+  session_start();
+}
 
 // Ελέγξτε εάν ο χρήστης είναι ήδη συνδεδεμένος, αν ναι, ανακατευθύνετε τον στην αρχική σελίδα
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-  header("location: home.php");
-  exit;
+  $isloggedin = true;
 }
 
 // Συμπερίληψη αρχείου διαμόρφωσης
@@ -63,15 +64,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password, $hashed_password)) {
 
               // Ο κωδικός πρόσβασης είναι σωστός, οπότε ξεκινήστε μια νέα συνεδρία
-              session_start();
-
+              if (session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+                // session isn't started
+                session_start();
+              }
               // Αποθήκευση δεδομένων σε μεταβλητές περιόδου σύνδεσης
               $_SESSION["loggedin"] = true;
               $_SESSION["id"] = $id;
               $_SESSION["username"] = $username;
 
-              // Ανακατεύθυνση χρήστη στην αρχική σελίδα
-              header("location: home.php");
+              // Αλλαγή της μεταβλητής σε loggin in user
+              $isloggedin = true;
             } else {
 
               // Ο κωδικός πρόσβασης δεν είναι έγκυρος, εμφανίστε ένα γενικό μήνυμα σφάλματος
@@ -138,17 +141,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
               <label for="loginPassword" class="col-form-label"><text>Κωδικός:</text></label>
-              <input class="form-control text-center" id="loginPassword" type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
-              <span><?php echo $password_err; ?></span>
-              <span><?php echo $password_err; ?></span>
+              <input class="form-control text-center" id="loginPassword" type="password" name="password" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>">
             </div>
-          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">
             Close
           </button>
           <input type="submit" value="Σύνδεση">
+          </form>
+
         </div>
       </div>
     </div>
@@ -157,17 +159,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item mr-10"><button class="btn btn-muted navbar-btn text-light" id="signUpButton" data-toggle="modal" data-target="#registerPopUp">
+
+          <li class="nav-item mx-3"><button class="btn btn-muted navbar-btn text-light" id="signUpButton" data-toggle="modal" data-target="#registerPopUp" <?php echo ($isloggedin == true) ? 'hidden' : ''; ?>>
               <text>Sign Up</text></button>
           </li>
-          <li class="nav-item"><button class="btn btn-muted navbar-btn text-light" id="logInButton" data-toggle="modal" data-target="#logInPopUp"><text>Login</text></button></li>
-
-
-          <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Impressionism()">Impressionism</button></li>
-
-          <li class="nav-item"><button class="btn btn-danger navbar-btn" onclick="Surrealism()">Surrealism</button></li>
-
-          <li class="nav-item"><button class="btn btn-primary navbar-btn" id="printPdfButton">Print Screen</button></li>
+          <li class="nav-item mx-1"><button class="btn btn-muted navbar-btn text-light" id="logInButton" data-toggle="modal" data-target="#logInPopUp" <?php echo ($isloggedin == true) ? 'hidden' : ''; ?>><text>Login</text></button></li>
+          <a id="logoutLink" href="logout.php" hidden></a>
+          <li class="nav-item mx-1" <?php echo ($isloggedin == false) ? 'hidden' : ''; ?>><button class="btn btn-danger navbar-btn" onclick="logOut()">Έξοδος</button></li>
+          <li class="nav-item mx-1"><button class="btn btn-warning navbar-btn" onclick="Impressionism()">Impressionism</button></li>
+          <li class="nav-item mx-1"><button class="btn btn-success navbar-btn" onclick="Surrealism()">Surrealism</button></li>
+          <li class="nav-item mx-1"><button class="btn btn-info navbar-btn" id="printPdfButton">Print Screen</button></li>
 
         </ul>
       </div>

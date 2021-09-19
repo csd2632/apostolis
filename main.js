@@ -162,10 +162,8 @@ async function async_func() {
     } catch (error) {
       debugger;
     }
-
   });
 }
-
 
 $(document).ready(() => {
   let isHidden = false;
@@ -195,13 +193,17 @@ $(document).ready(() => {
   async_func();
 
   $("#printPdfButton").on("click", () => printPdf());
+
   // $("#signUpButton").on("click", () => toggleRegisterModal(true));
 });
 // function toggleRegisterModal(state) {
 //   debugger;
 //   $("#registerPopUp").show();
 // }
-
+function logOut() {
+  debugger;
+  $("#logoutLink")[0].click();
+}
 document.addEventListener("mousemove", onMouseUpdate, false);
 document.addEventListener("mouseenter", onMouseUpdate, false);
 
