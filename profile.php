@@ -64,7 +64,8 @@
 
             </div>
         </div>
-
+        <input type="file" id="pdf-upload" />
+       <button id="upload-button">upload</button>
 
 
 
@@ -82,8 +83,7 @@
     <script type="text/javascript"></script>
     <script type="text/javascript"></script>
     <script src="./func/templates.js"></script>
-    <script src="./func/autocomplete.js"></script>
-    <script src="./main.js"></script>
+    <script src="./profile.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
