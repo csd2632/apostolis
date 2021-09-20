@@ -46,6 +46,7 @@ function uploadPDF(e, form) {
     },
     error: (e) => console.log("this is error response : ", e),
   });
+
   // var xhr = new XMLHttpRequest();
   // xhr.open("POST", "upload.php", true);
   // xhr.onload = function (e) {

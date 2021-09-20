@@ -30,8 +30,7 @@ $id = $_SESSION["id"];
                         <li class="nav-item mx-1"><button class="btn btn-danger navbar-btn" onclick="logOut()">Έξοδος</button></li>
                         <li class="nav-item mx-1"><button class="btn btn-warning navbar-btn" onclick="Impressionism()">Impressionism</button></li>
                         <li class="nav-item mx-1"><button class="btn btn-success navbar-btn" onclick="Surrealism()">Surrealism</button></li>
-                        <li class="nav-item mx-1"><button class="btn btn-info navbar-btn" id="printPdfButton">Print Screen</button></li>
-                        <a id="logoutLink" href="upload.php">click me baby one more time</a>
+                        <a id="logoutLink" href="upload.php" hidden></a>
 
                     </ul>
                 </div>
