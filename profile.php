@@ -75,8 +75,17 @@ $id = $_SESSION["id"];
 
             </div>
         </div>
-        <input type="file" id="pdf-upload" />
-        <button id="upload-button">upload</button>
+        <form id="fupForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="number" class="form-control" id="id" name="id" hidden value="<?php echo $id ?>">
+            </div>
+            <div class="form-group">
+                <label for="file">File</label>
+                <input type="file" class="form-control" id="file" name="file" required />
+            </div>
+            <input type="submit" name="submit" class="btn btn-success submitBtn" value="SUBMIT" />
+        </form>
+
 
 
 

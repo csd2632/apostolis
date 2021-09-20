@@ -1,6 +1,9 @@
 $(document).ready(() => {
   $("#profileButton").on("click", () => $("#profileLink")[0].click());
   $("#upload-button").on("click", () => insertPDF());
+  $("#fupForm").on("submit", function (e) {
+    uploadPDF(e, this);
+  });
 
   // $("#signUpButton").on("click", () => toggleRegisterModal(true));
 });
@@ -19,27 +22,69 @@ function insertPDF() {
     uploadPDF(pdf);
   };
 }
-
-function uploadPDF(blob) {
-  //   $.ajax({
-  //     url: "/upload.php",
-  //     data: blob,
-  //   }).done(function (data) {
-  //     console.log("data are :", data);
-  //   });
-  //   let formData = new FormData();
-  //   formData.append("source", blob);
-  //   let data = new FormData(blob);
+function logOut() {
+  $("#logoutLink")[0].click();
+}
+function uploadPDF(e, form) {
+  e.preventDefault();
   $.ajax({
     type: "POST",
     url: "upload.php",
-    data: { pdf: blob },
-    success: function (result) {
-      if (result) alert("file uploaded");
-      alert("something went wrong fuck off");
+    data: new FormData(form),
+    dataType: "json",
+    contentType: false,
+    cache: false,
+    processData: false,
+
+    success: function (response) {
+      //console.log(response);
+      console.log("this is the response :", response.message);
+      if (response.status == 1) {
+        $("#fupForm")[0].reset();
+      } else {
+      }
     },
-    error: function (response) {
-      alert("something went wrong fuck off");
-    },
+    error: (e) => console.log("this is error response : ", e),
   });
+  // var xhr = new XMLHttpRequest();
+  // xhr.open("POST", "upload.php", true);
+  // xhr.onload = function (e) {
+  //   console.log("Sent");
+  // };
+  // xhr.send({ pdf: blob });
+  // xhr.onreadystatechange = function () {
+  //   if (xhr.readyState === 4) {
+  //     if (xhr.response) {
+  //       alert("data uploaded");
+  //       console.log("the respose is : ", xhr.response);
+  //     } else {
+  //       alert("something went wrong try again");
+  //     }
+  //   }
+  // };
+  // let data = new FormData();
+  // data.append("file", JSON.stringify(blob));
+  // $.ajax({
+  //   url: "/upload.php",
+  //   data: { pdf: data },
+  // }).done(function (data) {
+  //   console.log("data are :", data);
+  // });
+  // let formData = new FormData();
+  // formData.append("source", blob);
+  // let data = new FormData(blob);
+  // $.ajax({
+  //   type: "POST",
+  //   url: "upload.php",
+  //   data: data,
+  //   contentType: false,
+  //   processData: false,
+  //   success: function (result) {
+  //     if (result) alert("file uploaded");
+  //     console.log(result);
+  //   },
+  //   error: function (response) {
+  //     alert("something went wrong fuck off");
+  //   },
+  // });
 }
