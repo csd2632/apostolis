@@ -6,7 +6,7 @@ $dbname = "account";
 $dbusername = "root";
 $connection = new mysqli($servername, $dbusername, "", $dbname);
 
-$sql = "select file_name from user_pdf where user_id = " . $id . ";";
+$sql = "select id, file_name from user_pdf where user_id = " . $id . ";";
 $result = $connection->query($sql);
 $data = $result->fetch_all();
 $result_files = array();

@@ -25,8 +25,24 @@ $(document).ready(() => {
     hideMethod: "fadeOut",
   };
 
+  $(document).on("click", ".deletePdf", (e) => {
+    let elementId = $(e.target)[0].id;
+    deletePdf(elementId);
+  });
+
   // $("#signUpButton").on("click", () => toggleRegisterModal(true));
 });
+var deletePdf = (id) => {
+  let path = pdfUrl.split("localhost/")[1] + "/";
+  $.ajax({
+    url: "deletepdf.php",
+    type: "POST",
+    data: { id, path },
+    success: (response) => toastr.error(response, "Success!"),
+    error: (message) => toastr.warning("Delete Failed", message),
+    complete: () => loadProfilePdf(),
+  });
+};
 function loadProfilePdf() {
   $.ajax({
     url: "getpdflist.php",
@@ -37,11 +53,23 @@ function loadProfilePdf() {
   });
 }
 var handlePdfFiles = (pdfList) => {
+  $("#pdfList").empty();
   let resultArray = pdfList.map(
     (x) =>
-      `<li><a href="${pdfUrl}/${x}"  target="_blank"><text class="text-danger">${x}</text></a></li>`
+      `<div class="d-flex justify-content-end">
+      <li class="list-group-item d-inline-flex align-items-center">
+      <div class="justify-self-start">
+      <a href="${pdfUrl}/${x[1]}" target="_blank">
+      <text class="text-danger">${x[1]}</text>
+      </div>
+      </a>
+      <div class="justify-self-end">
+      <i id="${x[0]}" class="deletePdf text-danger fa fa-trash" style="cursor: pointer;"></i>
+      </div>
+      </div>
+      </li>`
   );
-  $("body").append(`<div class="card"<ul>${resultArray}</ul></div>`);
+  $("#pdfList").append(`<ul class="list-group">${resultArray}</ul>`);
 };
 function insertPDF() {
   //let value=$("#pdf-upload").files;
@@ -82,6 +110,7 @@ function uploadPDF(e, form) {
       }
     },
     error: (e) => console.log("this is error response : ", e),
+    complete: () => loadProfilePdf(),
   });
 
   // var xhr = new XMLHttpRequest();

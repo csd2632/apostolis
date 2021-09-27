@@ -41,50 +41,49 @@ $id = $_SESSION["id"];
         <br>
         <br>
         <div class="card" style="padding: top 100px;">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-center">
                 <h1>
-                    profile
+                    PROFILE
                 </h1>
             </div>
             <div class="card-body">
-                <div class="card-title">
-                    <h1>
-                        profile
+                <div class="card-title d-flex justify-content-center">
+                    <h2>
+
                         <?php
 
-                        echo '<div id="loginError" class="alert alert-danger"><text> this is the user id :' . $id . 'and the username :' . $username . '</text></div>';
+                        echo $username;
 
 
                         ?>
-                    </h1>
+                    </h2>
 
                 </div>
                 <div class="card-text">
                     <div class="row">
+                        <div class="col-4"></div>
                         <div class="col-4">
-                            <h1>1</h1>
+                            <form id="fupForm" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" id="id" name="id" hidden value="<?php echo $id ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="file">File</label>
+                                    <input type="file" class="form-control" id="file" name="file" required />
+                                </div>
+                                <input type="submit" name="submit" class="btn btn-success submitBtn" value="SUBMIT" />
+                            </form>
                         </div>
-                        <div class="col-4">
-                            <h1>2</h1>
-                        </div>
-                        <div class="col-4">
-                            <h1>3</h1>
+                        <div id="pdfList" class="col-4">
+
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-        <form id="fupForm" enctype="multipart/form-data">
-            <div class="form-group">
-                <input type="number" class="form-control" id="id" name="id" hidden value="<?php echo $id ?>">
-            </div>
-            <div class="form-group">
-                <label for="file">File</label>
-                <input type="file" class="form-control" id="file" name="file" required />
-            </div>
-            <input type="submit" name="submit" class="btn btn-success submitBtn" value="SUBMIT" />
-        </form>
+
+
 
 
 
