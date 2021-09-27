@@ -8,6 +8,23 @@ $(document).ready(() => {
   });
   loadProfilePdf();
 
+  toastr.options = {
+    closeButton: true,
+    newestOnTop: false,
+    progressBar: true,
+    positionClass: "toast-top-right",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: "5000",
+    extendedTimeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+  };
+
   // $("#signUpButton").on("click", () => toggleRegisterModal(true));
 });
 function loadProfilePdf() {
@@ -20,7 +37,6 @@ function loadProfilePdf() {
   });
 }
 var handlePdfFiles = (pdfList) => {
-  debugger;
   let resultArray = pdfList.map(
     (x) =>
       `<li><a href="${pdfUrl}/${x}"  target="_blank"><text class="text-danger">${x}</text></a></li>`
@@ -58,9 +74,10 @@ function uploadPDF(e, form) {
 
     success: function (response) {
       //console.log(response);
-      console.log("this is the response :", response.message);
+
       if (response.status == 1) {
         $("#fupForm")[0].reset();
+        toastr.success("Success!!", response.message);
       } else {
       }
     },

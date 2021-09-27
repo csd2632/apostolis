@@ -32,7 +32,7 @@ if (isset($_POST['id']) || isset($_POST['file'])) {
             try {
                 $result = $connection->query($sql);
                 $response['status'] = 1;
-                $response['message'] = 'Form data submitted successfully!';
+                $response['message'] = 'Pdf Uploaded!';
             } catch (Exception) {
                 $response['status'] = 0;
                 $response['message'] = 'dberror!';
