@@ -1,12 +1,32 @@
+const serverUri = "/uploads";
+const pdfUrl = window.location.href.split("/profile.php")[0] + serverUri;
 $(document).ready(() => {
   $("#profileButton").on("click", () => $("#profileLink")[0].click());
   $("#upload-button").on("click", () => insertPDF());
   $("#fupForm").on("submit", function (e) {
     uploadPDF(e, this);
   });
+  loadProfilePdf();
 
   // $("#signUpButton").on("click", () => toggleRegisterModal(true));
 });
+function loadProfilePdf() {
+  $.ajax({
+    url: "getpdflist.php",
+    type: "POST",
+    dataType: "json",
+    success: (response) => handlePdfFiles(response),
+    error: (error) => console.log("error is :", error),
+  });
+}
+var handlePdfFiles = (pdfList) => {
+  debugger;
+  let resultArray = pdfList.map(
+    (x) =>
+      `<li><a href="${pdfUrl}/${x}"  target="_blank"><text class="text-danger">${x}</text></a></li>`
+  );
+  $("body").append(`<div class="card"<ul>${resultArray}</ul></div>`);
+};
 function insertPDF() {
   //let value=$("#pdf-upload").files;
   let value = document.getElementById("pdf-upload").files;
